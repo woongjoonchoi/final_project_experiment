@@ -1,0 +1,31 @@
+from typing import Optional, List
+from fastapi import FastAPI, APIRouter, File, UploadFile 
+from fastapi.templating import Jinja2Templates
+import uvicorn
+from starlette.responses import HTMLResponse
+from routers.home import get_db
+
+from pydantic import BaseModel
+
+router = APIRouter(prefix="/upload", tags=["Upload"])
+templates = Jinja2Templates(directory='serving/templates')
+
+
+# 업로드 페이지로 이동
+@router.get("/")
+def get_upload_page():
+    # return templates.TemplateResponse('upload.html', context={'request':request})
+    pass
+
+
+# 파일 업로드하기
+@router.post("/uploadfiles/")
+def files_upload(files: List[UploadFile] = File(...)):
+    return {"filenames": [file.filename for file in files]}
+
+
+
+if __name__ == '__main__':
+    app = FastAPI()
+    app.include_router(router)
+    uvicorn.run(app="AIPaperboy:app", host="0.0.0.0", port=8000, reload=True)

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Text Form</title>
+        <style>
+            * {
+                font-size: 16px;
+                font-family: Consolas, sans-serif;
+            }
+            fieldset {
+                margin-top: 10px;
+                margin-left: 20%;
+                margin-right: 15%;
+                width: 50%;
+                height: 10%;
+            }
+
+            textarea {
+                resize: none;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>This is Article Page</h3>
+        <form method="post" action="/question">
+            <fieldset>
+                <legend>Ask Your Question!</legend>
+                    <textarea name="text" cols="100" rows="5" placeholder="궁금한 질문을 입력해주세요." value="{{ text }}"></textarea><br>
+                    <input type="submit" value="submit"/>
+                    <input type="reset" value="reset"/><br>
+            </fieldset>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,15 @@
+* {
+    font-size: 16px;
+    font-family: Consolas, sans-serif;
+}
+fieldset {
+    margin-top: 10px;
+    margin-left: 20%;
+    margin-right: 15%;
+    width: 50%;
+    height: 10%;
+}
+
+textarea {
+    resize: none;
+}

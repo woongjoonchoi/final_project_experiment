@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Text Form</title>
+        <style type="text/css">
+            * {
+                font-family: Consolas, sans-serif;
+            }
+            fieldset {
+                width: 800px; height:150px;
+            }
+
+            textarea {
+                font-size:16px; resize:none;
+            }
+
+            #header {
+                width:800px; height:100px; margin-left:20%; margin-right:15%; border-top:1px solid gray; border-bottom:1px solid gray; 
+            }
+
+            #middle {
+                width:800px; height:10%; margin-left:20%; margin-right:15%; border-bottom:1px solid gray;  
+            }
+
+            #footer {
+                width:800px; height:10%; margin-left:20%; margin-right:15%; 
+            }
+
+            #sidebar {
+                width:200px; height:150px; float:left; margin-left: 20px; border: 1px solid gray;
+            }
+
+            #content{
+                width:700px; height:500px;
+            }
+            .btn { display:block; width:200px; height:40px; line-height:40px; border:1px #3399dd solid;; margin:20px auto; background-color:#66aaff; text-align:center; cursor: pointer; color:#333; transition:all 0.9s, color 0.3; }
+            .main:hover, .scrap:hover{ box-shadow:200px 0 0 0 rgba(0,0,0,0.5) inset; }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <div id="sidebar">
+                AI Paper Boy
+                <form action="/main">
+                    <button class="btn main">기사 홈으로</button>
+                </form>
+                <form action="/scrap">
+                    <button class="btn scrap">스크랩 박스로</button>
+                </form>
+            </div>
+            <div id="header">
+                header: 뉴스 타이틀이 들어갈 예정입니다.
+                <form method="post" action="/news_scrap/{{ news_id }}/create">
+                    <input type="hidden" name="user_id" value = "{{ user_id }}"/>
+                    <input type="hidden" name="user_news_id" value = "{{ user_news_id }}"/>
+                    <button type = "submit">스크랩 생성</button>
+                </form>
+        
+                <form method="post" action="/news_scrap/{{ news_id }}/delete">
+                    <input type="hidden" name="user_id" value = "{{ user_id }}"/>
+                    <input type="hidden" name="user_news_id" value = "{{ user_news_id }}"/>
+                    <button type = "submit">스크랩 해제</button>
+                </form>
+            </div>
+            <div id="middle">
+                <div id="content">
+                    content: 뉴스 본문이 들어갈 예정입니다.
+                </div>
+            </div>
+            <div id="footer">
+                <form method="post" action="/question">
+                    <fieldset>
+                        <legend>Ask Your Question!</legend>
+                            <textarea name="text" cols="80" rows="5" placeholder="궁금한 질문을 입력해주세요." value="{{ text }}"></textarea><br>
+                            <input type="submit" value="submit"/>
+                            <input type="reset" value="reset"/><br>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
