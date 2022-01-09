@@ -17,4 +17,3 @@ runs/
 ./serving/schema/sql_app.db
 sql_app.db
 data_kdx/
-code/experiment/
